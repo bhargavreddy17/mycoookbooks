@@ -1,0 +1,20 @@
+name: Echo Print Workflow
+
+# Trigger the workflow on push or pull request events
+on:
+  repository_dispatch:
+    types: [trigger-deployment]
+  push:
+    branches:
+      - main
+
+jobs:
+  echo-print:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run echo command
+      run: echo "Hello, World!"
